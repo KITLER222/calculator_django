@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Калькулятор</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        .dark {
+            background: black;
+            color: white;
+        }
+
+        .blue {
+            background: lightblue;
+        }
+
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Калькулятор</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="expr">
+    <button type="submit">=</button>
+</form>
+
+<h2>Результат: {{ result }}</h2>
+
+<h3>История:</h3>
+
+{% for h in history %}
+    <p>{{ h.text }} = {{ h.result }}</p>
+{% endfor %}
+
+<br>
+
+<button onclick="setTheme('')">Обычная</button>
+<button onclick="setTheme('dark')">Тёмная</button>
+<button onclick="setTheme('blue')">Синяя</button>
+
+<script>
+function setTheme(name) {
+    document.body.className = name;
+}
+</script>
+
+</body>
+</html>

@@ -58,3 +58,5 @@ DATABASES = {
 #говорим Django, какой тип поля использовать для автоматического id,
 # когда мы создаём модель, Django сам добавляет поле id.
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATIC_URL = 'static/'
