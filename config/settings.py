@@ -17,12 +17,16 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     #для работы со статическими файлами такие как цсс, джаваскрипт, картики
     'django.contrib.staticfiles',
+    'django.contrib.sessions',
     #наше приложение калькулятора (если его не указать джанго не узнает о нашем приложении)
     'calc',
 ]
 
 #список специальных обработчиков запросов (нам можно оставить пустым)
-MIDDLEWARE = []
+MIDDLEWARE = [
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+]
 
 #подключаем главный файл адресов сайта - config/urls.py
 ROOT_URLCONF = 'config.urls'

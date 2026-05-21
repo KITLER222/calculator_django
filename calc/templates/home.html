@@ -1,58 +1,51 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Калькулятор</title>
+{% extends 'calc/base.html' %}
 
-    <style>
-        body {
-            font-family: Arial;
-            text-align: center;
-        }
+{% block content %}
 
-        .dark {
-            background: black;
-            color: white;
-        }
+<section class="card">
+    <h1>Калькулятор</h1>
 
-        .blue {
-            background: lightblue;
-        }
+    <p>
+        Введите математическое выражение и нажмите кнопку.
+        Например: 2+2, 10*5, 20/4.
+    </p>
 
-        button {
-            margin: 5px;
-        }
-    </style>
-</head>
+    <form method="post">
+        {% csrf_token %}
 
-<body>
+        <input
+            type="text"
+            name="expr"
+            placeholder="Введите пример"
+            required
+        >
 
-<h1>Калькулятор</h1>
+        <button type="submit">
+            Посчитать
+        </button>
+    </form>
 
-<form method="post">
-    {% csrf_token %}
-    <input type="text" name="expr">
-    <button type="submit">=</button>
-</form>
+    <h2>Результат: {{ result }}</h2>
+</section>
 
-<h2>Результат: {{ result }}</h2>
+<section class="card">
+    <h2>Темы оформления</h2>
 
-<h3>История:</h3>
+    <button onclick="setTheme('')">
+        Обычная
+    </button>
 
-{% for h in history %}
-    <p>{{ h.text }} = {{ h.result }}</p>
-{% endfor %}
+    <button onclick="setTheme('dark')">
+        Тёмная
+    </button>
 
-<br>
+    <button onclick="setTheme('blue')">
+        Синяя
+    </button>
 
-<button onclick="setTheme('')">Обычная</button>
-<button onclick="setTheme('dark')">Тёмная</button>
-<button onclick="setTheme('blue')">Синяя</button>
+    <button onclick="setTheme('green')">
+        Зелёная
+    </button>
+</section>
 
-<script>
-function setTheme(name) {
-    document.body.className = name;
-}
-</script>
-
-</body>
-</html>
+{% endblock %}

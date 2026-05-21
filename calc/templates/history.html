@@ -1,0 +1,32 @@
+{% extends 'calc/base.html' %}
+
+{% block content %}
+
+<section class="card">
+    <h1>История операций</h1>
+
+    <p>
+        Здесь отображаются операции только текущей сессии пользователя.
+        У другого пользователя будет своя история.
+    </p>
+
+    {% if history %}
+
+        {% for h in history %}
+            <div class="history-item">
+                {{ h.text }} = {{ h.result }}
+            </div>
+        {% endfor %}
+
+        <a class="clear-link" href="{% url 'clear_history' %}">
+            Очистить историю
+        </a>
+
+    {% else %}
+
+        <p>История пока пустая.</p>
+
+    {% endif %}
+</section>
+
+{% endblock %}

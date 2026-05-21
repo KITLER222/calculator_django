@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор на Django</title>
+
+    <link rel="stylesheet" href="{% static 'calc/style.css' %}">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        Калькулятор на Django
+    </div>
+
+    <nav>
+        <a href="{% url 'home' %}">Калькулятор</a>
+        <a href="{% url 'history' %}">История</a>
+        <a href="{% url 'about' %}">О проекте</a>
+    </nav>
+</header>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer>
+    <p>Выполнила: Арабаджи Антонина Игоревна</p>
+    <p>Группа: Информатик 2 курс</p>
+    <p>Проект: веб-калькулятор на Django</p>
+    <p>2026</p>
+</footer>
+
+<script src="{% static 'calc/script.js' %}"></script>
+
+</body>
+</html>
