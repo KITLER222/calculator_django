@@ -34,7 +34,7 @@ def home(request):
         except:
             result = "Ошибка"
 
-    return render(request, "calc/home.html", {
+    return render(request, "home.html", {
         "result": result
     })
 
@@ -46,13 +46,13 @@ def history_page(request):
         session=calculator_session
     )
 
-    return render(request, "calc/history.html", {
+    return render(request, "history.html", {
         "history": history
     })
 
 
 def about_page(request):
-    return render(request, "calc/about.html")
+    return render(request, "about.html")
 
 
 def clear_history(request):
